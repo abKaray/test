@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>63mf_adaptive</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
@@ -11,7 +12,7 @@
 <div class="landing">
     <div class="landing__inner">
         <div class="first__sector">
-            <header class="landing__header">
+            <header class="landing__header js-landing-header">
                 <div class="landing__header__item landing__header__text">
                     Уже зарегестрированы?
                     <a href="#" class="landing__header__sign-in">Войти</a>
@@ -23,27 +24,43 @@
 
                 <div class="landing__header__item landing__header__gender">
                     <span class="male__percent">
-                        51% <img src="svg/male.svg" class="header__gender-symbol male__symbol" alt="Male" />
+                        51% <img src="img/male.svg" class="header__gender-symbol male__symbol" alt="Male" />
                     </span>
                     <span class="female__percent">
-                        <img src="svg/femail.svg" class="header__gender-symbol" alt="Femail"/> 49%
+                        <img src="img/femail.svg" class="header__gender-symbol" alt="Femail"/> 49%
                     </span>
                 </div>
             </header>
-            <div class="landing__error error__b-day">
+            <div class="landing__error js-error__search">
+                <h3 class="landing__error-text">Пожалуйста, выбирете пол</h3>
+            </div>
+            <div class="landing__error js-error__b-day">
                 <h3 class="landing__error-text">Пожалуйста, укажите свою дату рождения</h3>
             </div>
-            <div class="landing__reg-container">
+            <div class="landing__error js-error__name">
+                <h3 class="landing__error-text">Имя должно быть больше 2 символов</h3>
+            </div>
+            <div class="landing__error js-error__password">
+                <h3 class="landing__error-text">Пароль должен содержать не менее 8 символов</h3>
+            </div>
+            <div class="landing__error js-error__email">
+                <h3 class="landing__error-text js-hide-error">Неверный формат email</h3>
+                <h3 class="landing__error-text hide-error js-hide-error error-email-type-two">Ваш email не валидный. Используйте только буквы (a–z)</h3>
+                <h3 class="landing__error-text hide-error js-hide-error error-email-type-zero">Это точно Ваш Email? Если да, нажмите Продолжить</h3>
+                <h3 class="landing__error-text hide-error js-hide-error error-email-type-three">Такой e-mail уже зарегистрирован на сайте. <a href="/sign/in">Войти?</a>
+                    Или попробуйте другой e-mail </h3>
+            </div>
+            <div class="landing__reg-container js-reg-container">
                 <div class="landing__reg-form">
-                    <ul class="progress-bar">
-                        <li class="progress-item one active"></li>
-                        <li class="progress-item two"></li>
-                        <li class="progress-item three"></li>
-                        <li class="progress-item four"></li>
-                        <li class="progress-item five"></li>
+                    <ul class="progress-bar js-progress-bar">
+                        <li class="progress-item js-progress-item one active" data-progress="1"></li>
+                        <li class="progress-item js-progress-item two" data-progress="2"></li>
+                        <li class="progress-item js-progress-item three" data-progress="3"></li>
+                        <li class="progress-item js-progress-item four" data-progress="4"></li>
+                        <li class="progress-item js-progress-item five" data-progress="5"></li>
                     </ul>
 
-                    <div class="landing__reg__step step1 active">
+                    <div class="landing__reg__step js-reg-step active" data-step="1">
                         <div class="landing__step__text">
                             <h2 class="landing__step__title">
                                 Бесплатная регистрация
@@ -52,108 +69,106 @@
                                 Открыта только сегодня
                             </div>
                         </div>
-                        <div class="landing__reg__select own__gender closed">
-                            <!--<select name="OwnGender" class="landing__selector-element">-->
+                        <div class="landing__reg__select js-reg-select js-own__gender closed">
+                            <!--<select name="OwnGender" class="landing__selector-element ">-->
                                 <!--<option value="m">Я мужчина</option>-->
                                 <!--<option value="f">Я женщина</option>-->
                             <!--</select>-->
-                            <span class="landing__selector-selected">
-                                Я мужчина
+                            <span class="landing__selector-selected js-selector js-gender">
+
                             </span>
-                            <div class="landing_selector-option closed">
+                            <div class="landing_selector-option js-choose-gender closed">
                                 <span class="selector-item" data-gender="f">Я женщина</span>
-                                <span class="selector-item selected" data-gender="m">Я мужчина</span>
+                                <span class="selector-item" data-gender="m">Я мужчина</span>
                             </div>
                         </div>
-                        <div class="landing__reg__select search__gender closed">
-                            <!--<select name="SearchGender" class="landing__selector-element">-->
-                                <!--<option value="m">Ищу мужщину</option>-->
-                                <!--<option value="f">Ищу женщину</option>-->
-                            <!--</select>-->
-                            <span class="landing__selector-selected">
-                                Ищу женщину
+                        <div class="landing__reg__select js-reg-select js-search-gender closed">
+                            <select name="SearchGender" class="landing__selector-element">
+                                <option value="m">Ищу мужщину</option>
+                                <option value="f">Ищу женщину</option>
+                            </select>
+                            <span class="landing__selector-selected js-selector js-search">
+
                             </span>
-                            <div class="landing_selector-option search__gender closed">
-                                <span class="selector-item" data-gender="f">Ищу мужщину</span>
-                                <span class="selector-item selected" data-gender="m">Ищу женщину</span>
+                            <div class="landing_selector-option js-search__gender closed">
+                                <span class="selector-item" data-gender="m">Ищу мужщину</span>
+                                <span class="selector-item" data-gender="f">Ищу женщину</span>
                             </div>
                         </div>
-                        <button class="btn-next">Продолжить</button>
+                        <button class="btn-next js-btn-next active">Продолжить</button>
                     </div>
-                    <div class="landing__reg__step step2">
+                    <div class="landing__reg__step js-reg-step" data-step="2">
                         <div class="landing__step__text">
                             <h2 class="landing__step__title">
                                 Возраст и семейное положение
                             </h2>
                         </div>
-                        <div class="landing__reg__select day-birth closed">
-                            <span class="landing__selector-selected">
+                        <div class="landing__reg__select js-reg-select day-birth js-dayB closed">
+                            <span class="landing__selector-selected js-selector js-day-item">
                                 ДД
                             </span>
                             <div class="landing_selector-option closed">
-                                <span class="selector-item" >1</span>
-                                <span class="selector-item" >2</span>
-                                <span class="selector-item" >3</span>
-                                <span class="selector-item" >4</span>
-                                <span class="selector-item" >5</span>
-                                <span class="selector-item" >6</span>
-                                <span class="selector-item" >7</span>
-                                <span class="selector-item" >8</span>
-                                <span class="selector-item" >9</span>
-                                <span class="selector-item" >10</span>
-                                <span class="selector-item" >11</span>
-                                <span class="selector-item" >12</span>
-                                <span class="selector-item" >13</span>
-                                <span class="selector-item" >14</span>
-                                <span class="selector-item" >15</span>
-                                <span class="selector-item" >16</span>
-                                <span class="selector-item" >17</span>
-                                <span class="selector-item" >18</span>
-                                <span class="selector-item" >19</span>
-                                <span class="selector-item" >20</span>
-                                <span class="selector-item" >21</span>
-                                <span class="selector-item" >22</span>
-                                <span class="selector-item" >23</span>
-                                <span class="selector-item" >24</span>
-                                <span class="selector-item" >25</span>
-                                <span class="selector-item" >26</span>
-                                <span class="selector-item" >27</span>
-                                <span class="selector-item" >28</span>
-                                <span class="selector-item" >29</span>
-                                <span class="selector-item" >30</span>
-                                <span class="selector-item" >31</span>
+                                <span class="selector-item" data-day="1">1</span>
+                                <span class="selector-item" data-day="2">2</span>
+                                <span class="selector-item" data-day="3">3</span>
+                                <span class="selector-item" data-day="4">4</span>
+                                <span class="selector-item" data-day="5">5</span>
+                                <span class="selector-item" data-day="6">6</span>
+                                <span class="selector-item" data-day="7">7</span>
+                                <span class="selector-item" data-day="8">8</span>
+                                <span class="selector-item" data-day="9">9</span>
+                                <span class="selector-item" data-day="10">10</span>
+                                <span class="selector-item" data-day="11">11</span>
+                                <span class="selector-item" data-day="12">12</span>
+                                <span class="selector-item" data-day="13">13</span>
+                                <span class="selector-item" data-day="14">14</span>
+                                <span class="selector-item" data-day="15">15</span>
+                                <span class="selector-item" data-day="16">16</span>
+                                <span class="selector-item" data-day="17">17</span>
+                                <span class="selector-item" data-day="18">18</span>
+                                <span class="selector-item" data-day="19">19</span>
+                                <span class="selector-item" data-day="20">20</span>
+                                <span class="selector-item" data-day="21">21</span>
+                                <span class="selector-item" data-day="22">22</span>
+                                <span class="selector-item" data-day="23">23</span>
+                                <span class="selector-item" data-day="24">24</span>
+                                <span class="selector-item" data-day="25">25</span>
+                                <span class="selector-item" data-day="26">26</span>
+                                <span class="selector-item" data-day="27">27</span>
+                                <span class="selector-item" data-day="28">28</span>
+                                <span class="selector-item" data-day="29">29</span>
+                                <span class="selector-item" data-day="30">30</span>
+                                <span class="selector-item" data-day="31">31</span>
                             </div>
                         </div>
-                        <div class="landing__reg__select month-birth closed">
-                            <span class="landing__selector-selected">
+                        <div class="landing__reg__select js-reg-select month-birth js-month closed">
+                            <span class="landing__selector-selected js-selector js-month-item">
                                 ММ
                             </span>
                             <div class="landing_selector-option closed">
-                            <span class="selector-item">Январь</span>
-                            <span class="selector-item">Февраль</span>
-                            <span class="selector-item">Март</span>
-                            <span class="selector-item">Апрель</span>
-                            <span class="selector-item">Май</span>
-                            <span class="selector-item">Июнь</span>
-                            <span class="selector-item">Июль</span>
-                            <span class="selector-item">Август</span>
-                            <span class="selector-item">Сентябрь</span>
-                            <span class="selector-item">Октябрь</span>
-                            <span class="selector-item">Ноябрь</span>
-                            <span class="selector-item">Декабрь</span>
+                            <span class="selector-item" data-month="01">Январь</span>
+                            <span class="selector-item" data-month="02">Февраль</span>
+                            <span class="selector-item" data-month="03">Март</span>
+                            <span class="selector-item" data-month="04">Апрель</span>
+                            <span class="selector-item" data-month="05">Май</span>
+                            <span class="selector-item" data-month="06">Июнь</span>
+                            <span class="selector-item" data-month="07">Июль</span>
+                            <span class="selector-item" data-month="08">Август</span>
+                            <span class="selector-item" data-month="09">Сентябрь</span>
+                            <span class="selector-item" data-month="10">Октябрь</span>
+                            <span class="selector-item" data-month="11">Ноябрь</span>
+                            <span class="selector-item" data-month="12">Декабрь</span>
                             </div>
                         </div>
-                        <div class="landing__reg__select year-birth closed">
-                            <span class="landing__selector-selected">
+                        <div class="landing__reg__select js-reg-select year-birth js-year closed">
+                            <span class="landing__selector-selected js-selector js-year-item">
                                 ГГГ
                             </span>
                             <div class="landing_selector-option closed">
-                            <!--<span class="selector-item" data-gender="f">Я женщина</span>-->
-                            <!--<span class="selector-item selected" data-gender="m">Я мужчина</span>-->
                             </div>
                         </div>
-                        <div class="landing__reg__select family-status closed">
-                            <span class="landing__selector-selected">
+                        <div class="landing__reg__select js-reg-select family-status js-family-status closed">
+                            <span class="landing__selector-selected js-selector js-status-text">
                                 Семейное положение
                             </span>
                             <div class="landing_selector-option closed">
@@ -163,43 +178,153 @@
                             </div>
                         </div>
                         <div class="landing__btn">
-                            <button class="btn-prev left-btn">Назад</button>
-                            <button class="btn-next rigth-btn">Продолжить</button>
+                            <button class="btn-prev left-btn js-btn-prev">Назад</button>
+                            <button class="btn-next rigth-btn js-btn-next">Продолжить</button>
                         </div>
                     </div>
-                    <div class="landing__reg__step step3 ">
+                    <div class="landing__reg__step js-reg-step" data-step="3">
                         <div class="landing__step__text">
                             <h2 class="landing__step__title">
-                                Откуда вы?
+                                Ваше имя
                             </h2>
                         </div>
-                        <div class="landing__reg__select own__gender closed">
-                            <!--<select name="OwnGender" class="landing__selector-element">-->
-                            <!--<option value="m">Я мужчина</option>-->
-                            <!--<option value="f">Я женщина</option>-->
-                            <!--</select>-->
-                            <span class="landing__selector-selected">
-                                Я мужчина
+                        <div class="landing__form-item name js-form-name">
+                            <input type="text" class="form-input form-name" placeholder="Введите ваше имя"/>
+                        </div>
+                        <div class="landing__btn">
+                            <button class="btn-prev left-btn js-btn-prev">Назад</button>
+                            <button class="btn-next rigth-btn js-btn-next">Продолжить</button>
+                        </div>
+                    </div>
+                    <div class="landing__reg__step js-reg-step" data-step="4">
+                        <div class="landing__step__text">
+                            <h2 class="landing__step__title">
+                                Каким должен быть <br/>ваш партнер?
+                            </h2>
+                        </div>
+                        <div class="landing__reg__select js-reg-select growth js-growth closed">
+                            <span class="landing__selector-selected js-selector js-growth-selected">
+                                Рост
                             </span>
                             <div class="landing_selector-option closed">
-                                <span class="selector-item" data-gender="f">Я женщина</span>
-                                <span class="selector-item selected" data-gender="m">Я мужчина</span>
+                                <span class="selector-item">150</span>
+                                <span class="selector-item">160</span>
+                                <span class="selector-item">170</span>
+                                <span class="selector-item">180</span>
+                                <span class="selector-item">190</span>
+                                <span class="selector-item">200</span>
                             </div>
                         </div>
-                        <div class="landing__reg__select search__gender closed">
-                            <!--<select name="SearchGender" class="landing__selector-element">-->
-                            <!--<option value="m">Ищу мужщину</option>-->
-                            <!--<option value="f">Ищу женщину</option>-->
-                            <!--</select>-->
-                            <span class="landing__selector-selected">
-                                Ищу женщину
+                        <div class="landing__reg__select js-reg-select constitution js-constitution closed">
+                            <span class="landing__selector-selected js-selector js-constitution-selected">
+                                Телосложение
                             </span>
-                            <div class="landing_selector-option search__gender closed">
-                                <span class="selector-item" data-gender="f">Ищу мужщину</span>
-                                <span class="selector-item selected" data-gender="m">Ищу женщину</span>
+                            <div class="landing_selector-option closed">
+                                <span class="selector-item">Стройное</span>
+                                <span class="selector-item">Среднее</span>
+                                <span class="selector-item">Крупное</span>
                             </div>
                         </div>
-                        <button class="btn-next">Продолжить</button>
+                        <div class="landing__reg__select js-reg-select eye-color js-eye closed">
+                            <span class="landing__selector-selected js-selector js-eye-selected">
+                                Цвет глаз
+                            </span>
+                            <div class="landing_selector-option closed">
+                                <span class="selector-item">Черный</span>
+                                <span class="selector-item">Коричневый</span>
+                                <span class="selector-item">Серовато-зеленый</span>
+                                <span class="selector-item">Сероватый</span>
+                                <span class="selector-item">Зеленовато-коричневый</span>
+                                <span class="selector-item">Сине-серый</span>
+                                <span class="selector-item">Зеленый</span>
+                                <span class="selector-item">Синий</span>
+                                <span class="selector-item">Другой</span>
+                            </div>
+                        </div>
+                        <div class="landing__reg__select js-reg-select hair-color js-hair closed">
+                            <span class="landing__selector-selected js-selector js-hair-selected">
+                                Цвет волос
+                            </span>
+                            <div class="landing_selector-option closed">
+                                <span class="selector-item">Блондин</span>
+                                <span class="selector-item">Коричневый</span>
+                                <span class="selector-item">Темно-коричневый</span>
+                                <span class="selector-item">Серый</span>
+                                <span class="selector-item">Черный</span>
+                                <span class="selector-item">Крашеный</span>
+                                <span class="selector-item">Лысый(-ая)</span>
+                            </div>
+                        </div>
+                        <div class="landing__reg__select js-reg-select hair-length js-hair-length closed">
+                            <span class="landing__selector-selected js-selector js-hair-length-selected">
+                                Длина волос
+                            </span>
+                            <div class="landing_selector-option closed">
+                                <span class="selector-item">Короткие</span>
+                                <span class="selector-item">Средней длины</span>
+                                <span class="selector-item">Длинные</span>
+                                <span class="selector-item">Лысый(-ая)</span>
+                            </div>
+                        </div>
+                        <div class="landing__btn">
+                            <button class="btn-prev left-btn js-btn-prev">Назад</button>
+                            <button class="btn-next rigth-btn js-btn-next">Продолжить</button>
+                        </div>
+                    </div>
+                    <div class="landing__reg__step js_container js-reg-step" data-step="5">
+                        <div class="landing__step__text">
+                            <h2 class="landing__step__title">
+                                Последний шаг!
+                            </h2>
+                        </div>
+                        <div class="landing__form-item js-email">
+                            <label class="item-details" for="email">Пожалуйста, укажите свой email</label>
+                            <input class="form-input js-form-email" type="email" id="email">
+                        </div>
+                        <div class="landing__form-item js-password">
+                            <label class="item-details" for="password">Пожалуйста, придумайте пароль</label>
+                            <input class="form-input js-form-password" type="password" id="password">
+                            <img class="eye-img pass-show active" src="img/eye.svg" alt="eye" />
+                            <img class="eye-img pass-hide" src="img/eye-blocked.svg" alt="eye-blocked" />
+                        </div>
+                        <p class="landing__agree">
+                            Регистрируясь, я подтверждаю, что мне уже
+                            исполнилось 18 лет и я ознакомился с условиями
+                            пользования сайтом.
+
+                        </p>
+                        <div class="landing__btn">
+                            <button class="btn-prev left-btn js-btn-prev">Назад</button>
+                            <button class="btn-next rigth-btn js-btn-next">Продолжить</button>
+                        </div>
+                    </div>
+                    <div class="landing__reg__step last__step js_container js-reg-step" data-step="6">
+                        <div class="landing__step__text">
+                            <h2 class="landing__step__title">
+                                Добро пожаловать <br /> на Kismia
+                            </h2>
+                            <p class="landing__step__subtex">Поздравляем, ваш профиль успешно создан!</p>
+                            <div class="landing__step__info">
+                                <div class="paragraph">
+                                    Вам осталось подтвердить свою электронную почту.
+                                    Мы отправили вам письмо, пожалуйста, перейдите по ссылке,
+                                    указанной в нем. Подтвердив свой электронный адрес, вы
+                                    сможете начать знакомиться на сайте.
+                                </div>
+                                <div class="paragraph">
+                                    ВАЖНО: Пожалуйста, проверьте папку Спам.
+                                    В некоторых случаях сообщения могут попадать туда.
+                                    Или отключите фильтр спама, чтобы получить подтверждение
+                                    по электронной почте и перейти на сайт.
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="landing__step__wish">
+                            Желаем вам приятных знакомств на Kismia!
+                        </h3>
+                        <div class="landing__btn">
+                            <button class="btn-next js-submit">Перейти на свой профиль</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -217,19 +342,49 @@
             </h3>
             <div class="second__list">
                 <ul>
-                    <li class="second__list-item first-img"></li>
-                    <li class="second__list-item second-img"></li>
-                    <li class="second__list-item third-img"></li>
-                    <li class="second__list-item four-img"></li>
-                    <li class="second__list-item five-img"></li>
+                    <li class="second__list-item js-list-item first-img"></li>
+                    <li class="second__list-item js-list-item second-img"></li>
+                    <li class="second__list-item js-list-item third-img"></li>
+                    <li class="second__list-item js-list-item four-img"></li>
+                    <li class="second__list-item js-list-item five-img"></li>
                 </ul>
             </div>
         </div>
     </div>
     <footer class="landing__footer">
-        .footer
+        <ul class="footer__list">
+            <div class="footer-item-block">
+                <li class="footer-item"><a href="#" class="footer-item-link">О проекте</a></li>
+                <li class="footer-item"><a href="#" class="footer-item-link">Контакты</a></li>
+            </div>
+            <div class="footer-item-block">
+                <li class="footer-item"><a href="#" class="footer-item-link">Политика конфиденциальности</a></li>
+                <li class="footer-item"><a href="#" class="footer-item-link">Пользовательское соглашение</a></li>
+            </div>
+            <div class="footer-item-block">
+                <li class="footer-item"><a href="#" class="footer-item-link">Поддержка</a></li>
+                <li class="footer-item"><a href="#" class="footer-item-link">Советы</a></li>
+            </div>
+            <div class="footer-item-block">
+                <li class="footer-item"><a href="#" class="footer-item-link">Партнерская программа</a></li>
+                <li class="footer-item"><a href="#" class="footer-item-link">Правила оплаты</a></li>
+            </div>
+        </ul>
     </footer>
 </div>
+
+
+<form action="http://en.kismia.com.release.stage.domains/test " id="fin_form" name="fin_form" method="post" accept-charset="UTF-8">
+
+    <input type="hidden" name="bday" class="bday" value=""><!--день рождения -->
+
+    <input type="hidden" name="name" class="fin_name" value=""> <!-- имя -->
+    <input type="hidden" name="password" class="fin_pass" value=""><!-- пароль -->
+    <input type="hidden" name="gender" class="fin_gender" value=""> <!-- пол -->
+    <input type="hidden" name="search_gender" class="fin_search_gender" value=""> <!-- пол партнера -->
+    <input type="hidden" name="email" class="fin_email" value=""> <!-- эмэил -->
+
+</form>
 
 <script src="index.js"></script>
 </body>
